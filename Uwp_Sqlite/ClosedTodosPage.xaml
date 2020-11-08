@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Uwp_Sqlite.ClosedTodosPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Uwp_Sqlite"
+    xmlns:models="using:Uwp_Sqlite.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Closed Todos" FontSize="30"/>
+            <ListView x:Name="lvClosedTodos"  Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Todo">
+                        <StackPanel Margin="20">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{ x:Bind Customer}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="{ x:Bind Title }" Margin="0,2"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel DataContext="{Binding SelectedItem, ElementName=lvClosedTodos}"
+            Margin="0,24,0,0" Grid.Row="2">
+            <TextBlock Text="{Binding Customer}"/>
+            <TextBlock Text="{Binding Title}"/>
+            <TextBlock Text="{Binding Description}"/>
+            <TextBlock Text="{Binding Created}"/>
+            <ComboBox x:Name="cmbStatus" SelectedItem="{Binding Status}" SelectionChanged="StatusChanged" Margin="0,5,10,5"/>
+        </StackPanel>
+    </Grid>
+</Page>

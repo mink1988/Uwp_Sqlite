@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Uwp_Sqlite.CreateTodoPage"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Uwp_Sqlite"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Create a new Todo" FontSize="26" Margin="0,30,10,10"/>
+        <TextBlock Grid.Row="1" Text="Todo Details" FontSize="18" Margin="0,50,10,5"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBox x:Name="tbcustominput" PlaceholderText="Customer Name"  Margin="0,5,10,5" />
+            <TextBox x:Name="tbtitleinput" PlaceholderText="Title" Margin="0,5,10,5" />
+            <TextBox x:Name="tbdesrcinput" PlaceholderText="Description" Margin="0,5,10,5" />
+            <ComboBox x:Name="cmbStatus" PlaceholderText="Status" Margin="0,5,10,5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center">
+            <Button x:Name="CreateTodo" Content="Create Todo" Click="CreateTodo_Click"  FontSize="20" Padding="30" Margin="10"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
